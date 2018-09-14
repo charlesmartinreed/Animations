@@ -22,9 +22,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlR-5s-XAr">
-                                <rect key="frame" x="164" y="518" width="46" height="30"/>
+                                <rect key="frame" x="144" y="507" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="NEXT"/>
+                                <state key="normal" title="START"/>
                                 <connections>
                                     <action selector="nextFrame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cyx-xe-lN3"/>
                                 </connections>
@@ -34,6 +34,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="button" destination="dlR-5s-XAr" id="6mP-9b-gPj"/>
                         <outlet property="imageView" destination="Xrh-ne-Bsd" id="MvL-7j-OtG"/>
                     </connections>
                 </viewController>

@@ -12,8 +12,12 @@ class ViewController: UIViewController {
     
     //MARK:- Properties
     var imageCount = 1
+    var animationIsRunning = false
+    var timer = Timer()
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var button: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,19 +25,39 @@ class ViewController: UIViewController {
     }
 
     @IBAction func nextFrame(_ sender: Any) {
+        
         //loop through all the images
+        animationIsRunning = !animationIsRunning
         
-        imageCount += 1
+        if animationIsRunning {
+            //change the button title
+            button.setTitle("STOP", for: .normal)
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(advanceFrame), userInfo: nil, repeats: true)
             
-        imageView.image = UIImage(named: "frame\(imageCount).gif")
+            
+        }
         
-        if imageCount == 10 {
-            imageCount = 1
+        if !animationIsRunning {
+            button.setTitle("START", for: .normal)
+            timer.invalidate()
             
-            imageView.image = UIImage(named: "frame\(imageCount).gif")
+
         }
         
         
+    }
+    
+    @objc func advanceFrame() {
+        for _ in 1...10 {
+            imageView.image = UIImage(named: "frame\(imageCount).gif")
+            imageCount += 1
+            print(imageCount)
+            
+            if imageCount == 10 {
+                imageCount = 1
+                print(imageCount)
+            }
+        }
     }
     
 }
