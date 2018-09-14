@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     //MARK:- Properties
     var imageCount = 1
+    
     var animationIsRunning = false
+    
     var timer = Timer()
 
     @IBOutlet weak var imageView: UIImageView!
@@ -59,6 +61,37 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    //MARK:- Other iOS Animations
+    
+    @IBAction func fadeIn(_ sender: Any) {
+        imageView.alpha = 0
+        
+        UIView.animate(withDuration: 1) {
+            self.imageView.alpha = 1
+        }
+    }
+    
+    @IBAction func slideIn(_ sender: Any) {
+        //begin by moving the image offscreen, to the left by 500
+        imageView.center = CGPoint(x: imageView.center.x - 500, y: imageView.center.y)
+        
+        //now move it back
+        UIView.animate(withDuration: 1) {
+            self.imageView.center = CGPoint(x: self.imageView.center.x + 500, y: self.imageView.center.y)
+        }
+    }
+    
+    @IBAction func Grow(_ sender: Any) {
+        //grow from the top-left of screen
+        imageView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        
+        UIView.animate(withDuration: 1) {
+            self.imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        }
+        
+    }
+    
     
 }
 
